@@ -1,15 +1,49 @@
 {
-  "name": "brainstorm-graph",
-  "version": "1.0.0",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
+  "name": "@rocket.chat/brainstorm-graph",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -p tsconfig.json",
+    "testunit": "jest",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src tests",
+    "dev": "tsc -p tsconfig.json --watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": [
+    "rocket.chat",
+    "brainstorm",
+    "graph",
+    "mind-map"
+  ],
+  "author": "Rocket.Chat",
+  "license": "MIT",
+  "description": "Graph-based mind mapping tool for Rocket.Chat brainstorming sessions",
+  "dependencies": {
+    "@rocket.chat/core-typings": "workspace:*",
+    "@rocket.chat/ui-contexts": "workspace:*",
+    "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "@rocket.chat/eslint-config": "workspace:^",
+    "@types/events": "^3.0.0",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "~5.3.3"
+  },
+  "peerDependencies": {
+    "@rocket.chat/core-typings": "workspace:*",
+    "@rocket.chat/ui-contexts": "workspace:*"
+  },
+  "volta": {
+    "node": "22.11.0"
+  },
+  "engines": {
+    "node": "22.11.0"
+  }
 }

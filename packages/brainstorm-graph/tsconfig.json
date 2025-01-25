@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.client.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "composite": true,
+    "baseUrl": ".",
+    "target": "es2018",
+    "lib": ["esnext", "dom"],
+    "module": "CommonJS",
+    "paths": {
+      "*": ["*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "tests"],
+  "references": []
+}
