@@ -16,6 +16,7 @@ import { NotAuthorizedError } from '../../lib/errors/NotAuthorizedError';
 import { NotSubscribedToRoomError } from '../../lib/errors/NotSubscribedToRoomError';
 import { OldUrlRoomError } from '../../lib/errors/OldUrlRoomError';
 import { RoomNotFoundError } from '../../lib/errors/RoomNotFoundError';
+import { BrainstormProvider } from '../../../app/slashcommand-asciiarts/client/brainstorm-context';
 
 const RoomProvider = lazy(() => import('./providers/RoomProvider'));
 const RoomNotFound = lazy(() => import('./RoomNotFound'));
@@ -71,6 +72,7 @@ const RoomOpener = ({ type, reference }: RoomOpenerProps): ReactElement => {
 						}
 
 						return (
+							<BrainstormProvider>
 							<RoomLayout
 								header={<Header />}
 								body={
@@ -81,6 +83,7 @@ const RoomOpener = ({ type, reference }: RoomOpenerProps): ReactElement => {
 									</States>
 								}
 							/>
+							</BrainstormProvider>
 						);
 					})()}
 			</Suspense>

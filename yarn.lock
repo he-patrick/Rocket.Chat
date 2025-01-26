@@ -34118,6 +34118,7 @@ __metadata:
     "@types/chart.js": "npm:^2.9.41"
     "@types/js-yaml": "npm:^4.0.9"
     "@types/stream-buffers": "npm:^3.0.7"
+    eventemitter3: "npm:^5.0.1"
     node-gyp: "npm:^10.2.0"
     ts-node: "npm:^10.9.2"
     turbo: "npm:^2.3.3"

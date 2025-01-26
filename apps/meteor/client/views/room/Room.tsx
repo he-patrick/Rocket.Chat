@@ -19,6 +19,7 @@ import ChatProvider from './providers/ChatProvider';
 import { DateListProvider } from './providers/DateListProvider';
 import { SelectedMessagesProvider } from './providers/SelectedMessagesProvider';
 import { ContextualbarSkeleton } from '../../components/Contextualbar';
+import { BrainstormProvider } from '../../../app/slashcommand-asciiarts/client/brainstorm-context';
 
 const UiKitContextualBar = lazy(() => import('./contextualBar/uikit/UiKitContextualBar'));
 
@@ -36,6 +37,7 @@ const Room = (): ReactElement => {
 			<MessageHighlightProvider>
 				<FocusScope>
 					<DateListProvider>
+						<BrainstormProvider>
 						<RoomLayout
 							data-qa-rc-room={room._id}
 							aria-label={
@@ -90,6 +92,7 @@ const Room = (): ReactElement => {
 								))
 							}
 						/>
+						</BrainstormProvider>
 					</DateListProvider>
 				</FocusScope>
 			</MessageHighlightProvider>

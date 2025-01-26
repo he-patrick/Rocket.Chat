@@ -12,7 +12,6 @@ async function Gimme({ message, params, userId }: SlashCommandCallbackParams<'gi
 	msg.msg = `༼ つ ◕_◕ ༽つ ${params}`;
 	await executeSendMessage(userId, msg);
 }
-
 slashCommands.add({
 	command: 'gimme',
 	callback: Gimme,

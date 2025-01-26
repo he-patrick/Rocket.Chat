@@ -1,5 +1,6 @@
 import { FeaturePreview, FeaturePreviewOff, FeaturePreviewOn } from '@rocket.chat/ui-client';
 import type { ReactElement } from 'react';
+import { BrainstormProvider } from '../../../app/slashcommand-asciiarts/client/brainstorm-context';
 
 import HeaderSkeleton from './Header/HeaderSkeleton';
 import HeaderSkeletonV2 from './HeaderV2/HeaderSkeleton';
@@ -8,6 +9,7 @@ import RoomLayout from './layout/RoomLayout';
 import MessageListSkeleton from '../../components/message/list/MessageListSkeleton';
 
 const RoomSkeleton = (): ReactElement => (
+	<BrainstormProvider>
 	<RoomLayout
 		header={
 			<FeaturePreview feature='newNavigation'>
@@ -26,5 +28,6 @@ const RoomSkeleton = (): ReactElement => (
 			</>
 		}
 	/>
+	</BrainstormProvider>
 );
 export default RoomSkeleton;

@@ -5,6 +5,7 @@ import { useLayout } from '@rocket.chat/ui-contexts';
 import type { ReactElement } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 
+import { BrainstormProvider } from '../../../app/slashcommand-asciiarts/client/brainstorm-context';
 import RoomLayout from './layout/RoomLayout';
 import SidebarToggler from '../../components/SidebarToggler';
 import { useJoinRoom } from '../../hooks/useJoinRoom';
@@ -24,6 +25,7 @@ const NotSubscribedRoom = ({ rid, reference, type }: NotSubscribedRoomProps): Re
 	const { isMobile } = useLayout();
 
 	return (
+		<BrainstormProvider>
 		<RoomLayout
 			header={
 				isMobile && (
@@ -59,6 +61,7 @@ const NotSubscribedRoom = ({ rid, reference, type }: NotSubscribedRoomProps): Re
 				</Box>
 			}
 		/>
+		</BrainstormProvider>	
 	);
 };
 

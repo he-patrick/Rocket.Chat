@@ -90,7 +90,7 @@ WebApp.rawConnectHandlers.use(async (_req: http.IncomingMessage, res: http.Serve
 				'img-src * data: blob:',
 				'media-src * data:',
 				`script-src 'self' 'unsafe-eval' ${inlineHashes} ${cdn_prefixes} ${external}`,
-				`style-src 'self' 'unsafe-inline' ${cdn_prefixes}`,
+				`style-src 'self' 'unsafe-inline' nonce-abc ${cdn_prefixes}`,
 			].join('; '),
 		);
 	}

@@ -4,6 +4,7 @@ import { useLayout } from '@rocket.chat/ui-contexts';
 import type { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { BrainstormProvider } from '../../../app/slashcommand-asciiarts/client/brainstorm-context';
 import RoomLayout from './layout/RoomLayout';
 import NotFoundState from '../../components/NotFoundState';
 import SidebarToggler from '../../components/SidebarToggler';
@@ -13,6 +14,7 @@ const RoomNotFound = (): ReactElement => {
 	const { isMobile } = useLayout();
 
 	return (
+		<BrainstormProvider>
 		<RoomLayout
 			header={
 				isMobile && (
@@ -29,6 +31,7 @@ const RoomNotFound = (): ReactElement => {
 				</Box>
 			}
 		/>
+		</BrainstormProvider>
 	);
 };
 

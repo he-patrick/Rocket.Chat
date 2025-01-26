@@ -11,6 +11,8 @@ import { ContextualbarDialog } from '../../../components/Contextualbar';
 import HeaderSkeleton from '../Header/HeaderSkeleton';
 import HeaderSkeletonV2 from '../HeaderV2/HeaderSkeleton';
 
+import { useBrainstorm } from '../../../../app/slashcommand-asciiarts/client/brainstorm-context';
+
 type RoomLayoutProps = {
 	header?: ReactNode;
 	body?: ReactNode;
@@ -26,7 +28,9 @@ const useBreakpointsElement = () => {
 	const breakpoints = useMemo(
 		() =>
 			breakpointsDefinitions
-				.filter(({ minViewportWidth }) => minViewportWidth && borderBoxSize.inlineSize && borderBoxSize.inlineSize >= minViewportWidth)
+				.filter(
+					({ minViewportWidth }) => minViewportWidth && borderBoxSize.inlineSize && borderBoxSize.inlineSize >= minViewportWidth,
+				)
 				.map(({ name }) => name),
 		[borderBoxSize],
 	);
@@ -38,12 +42,14 @@ const useBreakpointsElement = () => {
 };
 
 const RoomLayout = ({ header, body, footer, aside, ...props }: RoomLayoutProps): ReactElement => {
+	const { htmlBody } = useBrainstorm();
+
 	const { ref, breakpoints } = useBreakpointsElement();
 
 	const contextualbarPosition = breakpoints.includes('md') ? 'relative' : 'absolute';
 	const contextualbarSize = breakpoints.includes('sm') ? (breakpoints.includes('xl') ? '38%' : '380px') : '100%';
 
-	const layout = useLayout();
+	const layout = useLayout() ?? { size: {} };
 
 	return (
 		<LayoutContext.Provider
@@ -85,6 +91,12 @@ const RoomLayout = ({ header, body, footer, aside, ...props }: RoomLayoutProps):
 						<ContextualbarDialog position={contextualbarPosition}>
 							<Suspense fallback={null}>{aside}</Suspense>
 						</ContextualbarDialog>
+					)}
+					{/* Render the htmlBody if it's available */}
+					{htmlBody && (
+						<Box is='div' display='flex' flexDirection='column' flexGrow={4} minWidth={0}>
+							<div dangerouslySetInnerHTML={{ __html: htmlBody }} />
+						</Box>
 					)}
 				</Box>
 			</Box>
